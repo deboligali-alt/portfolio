@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechPathway Blog</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:Arial, sans-serif;
+      background:#f4f7fb;
+      color:#333;
+      line-height:1.7;
+    }
+
+    /* HEADER */
+
+    header{
+      background:#0d6efd;
+      padding:18px 7%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      position:sticky;
+      top:0;
+      z-index:1000;
+      box-shadow:0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    .brand h1{
+      color:white;
+      font-size:32px;
+    }
+
+    nav ul{
+      list-style:none;
+      display:flex;
+      gap:25px;
+      flex-wrap:wrap;
+    }
+
+    nav ul li a{
+      text-decoration:none;
+      color:white;
+      font-size:18px;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    nav ul li a:hover{
+      color:#ffd54f;
+    }
+
+    /* MAIN */
+
+    main{
+      max-width:1200px;
+      margin:auto;
+      padding:30px 20px;
+    }
+
+    /* HERO */
+
+    .hero{
+      background-image:
+      linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+      url(image6.jpg);
+
+      background-size:cover;
+      background-position:center;
+      padding:100px 30px;
+      border-radius:25px;
+      text-align:center;
+      margin-bottom:45px;
+      box-shadow:0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .hero h2{
+      color:white;
+      font-size:65px;
+      margin-bottom:15px;
+    }
+
+    .hero p{
+      color:#f1f1f1;
+      font-size:22px;
+      max-width:700px;
+      margin:auto;
+    }
+
+    .hero-buttons{
+      margin-top:30px;
+      display:flex;
+      justify-content:center;
+      gap:15px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      text-decoration:none;
+      padding:14px 28px;
+      border-radius:30px;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    .btn-primary{
+      background:#0d6efd;
+      color:white;
+    }
+
+    .btn-primary:hover{
+      background:#0b5ed7;
+    }
+
+    .btn-secondary{
+      background:white;
+      color:#0d6efd;
+    }
+
+    /* BLOG GRID */
+
+    .blog-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
+      gap:25px;
+    }
+
+    .blog-card{
+      background:white;
+      padding:25px;
+      border-radius:20px;
+      box-shadow:0 5px 18px rgba(0,0,0,0.08);
+      transition:0.3s;
+    }
+
+    .blog-card:hover{
+      transform:translateY(-8px);
+    }
+
+    .tag{
+      display:inline-block;
+      padding:7px 15px;
+      border-radius:20px;
+      font-size:14px;
+      font-weight:bold;
+      margin-bottom:18px;
+    }
+
+    .blue{
+      background:#e7f1ff;
+      color:#0d6efd;
+    }
+
+    .yellow{
+      background:#fff3cd;
+      color:#856404;
+    }
+
+    .green{
+      background:#d4edda;
+      color:#155724;
+    }
+
+    .blog-card h3{
+      font-size:28px;
+      margin-bottom:10px;
+    }
+
+    .blog-card p{
+      margin-bottom:15px;
+      color:#555;
+    }
+
+    .blog-card hr{
+      border:none;
+      height:1px;
+      background:#eee;
+      margin:18px 0;
+    }
+
+    .blog-card ul,
+    .blog-card ol{
+      padding-left:20px;
+      margin-bottom:15px;
+    }
+
+    /* NEWSLETTER */
+
+    .newsletter{
+      margin-top:60px;
+      background:white;
+      padding:50px 25px;
+      border-radius:25px;
+      text-align:center;
+      box-shadow:0 5px 18px rgba(0,0,0,0.08);
+    }
+
+    .newsletter h2{
+      font-size:40px;
+      color:#0d6efd;
+      margin-bottom:15px;
+    }
+
+    .newsletter p{
+      max-width:650px;
+      margin:auto;
+      color:#666;
+      font-size:18px;
+    }
+
+    .newsletter form{
+      margin-top:25px;
+      display:flex;
+      justify-content:center;
+      gap:15px;
+      flex-wrap:wrap;
+    }
+
+    .newsletter input{
+      padding:15px;
+      width:320px;
+      border-radius:30px;
+      border:1px solid #ccc;
+      outline:none;
+      font-size:16px;
+    }
+
+    .newsletter button{
+      background:#0d6efd;
+      color:white;
+      border:none;
+      padding:15px 28px;
+      border-radius:30px;
+      font-size:16px;
+      font-weight:bold;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .newsletter button:hover{
+      background:#0b5ed7;
+    }
+
+    /* QUOTE */
+
+    .quote{
+      margin-top:60px;
+      text-align:center;
+      padding:50px 20px;
+    }
+
+    .quote h2{
+      font-size:40px;
+      color:#0d6efd;
+      margin-bottom:20px;
+    }
+
+    .quote p{
+      max-width:750px;
+      margin:auto;
+      font-size:25px;
+      color:#555;
+      font-style:italic;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:#111827;
+      color:white;
+      padding:50px 8% 20px;
+      margin-top:50px;
+    }
+
+    .footer-container{
+      display:flex;
+      justify-content:space-between;
+      gap:40px;
+      flex-wrap:wrap;
+    }
+
+    .footer-box{
+      flex:1;
+      min-width:250px;
+    }
+
+    .footer-box h2,
+    .footer-box h3{
+      margin-bottom:15px;
+    }
+
+    .footer-box p{
+      color:#cbd5e1;
+      margin-bottom:10px;
+    }
+
+    .social-links{
+      display:flex;
+      gap:15px;
+      flex-wrap:wrap;
+      margin-top:15px;
+    }
+
+    .social-links a{
+      text-decoration:none;
+      color:white;
+      transition:0.3s;
+    }
+
+    .social-links a:hover{
+      color:#60a5fa;
+    }
+
+    .footer-bottom{
+      text-align:center;
+      margin-top:35px;
+      padding-top:20px;
+      border-top:1px solid #374151;
+      color:#9ca3af;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:768px){
+
+      header{
+        flex-direction:column;
+        gap:15px;
+      }
+
+      .hero h2{
+        font-size:42px;
+      }
+
+      .hero p{
+        font-size:18px;
+      }
+
+      nav ul{
+        justify-content:center;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+
+    <div class="brand">
+      <h1>TechPathway</h1>
+    </div>
+
+    <nav>
+      <ul>
+
+        <li><a href="../project.html">Home</a></li>
+
+        <li><a href="../about.html">About</a></li>
+
+        <li><a href="../contact.html">Contact</a></li>
+
+        <li>
+          <a href="../images/blog.html" style="text-decoration:underline; color:#ffd54f;">
+            Blog
+          </a>
+        </li>
+
+      </ul>
+    </nav>
+
+  </header>
+
+  <!-- MAIN -->
+
+  <main>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+      <h2>TechPathway Blog</h2>
+
+      <p>
+        Short reads to keep you motivated,
+        disciplined, and confident in tech.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="#post-1" class="btn btn-primary">
+          Start Reading
+        </a>
+
+        <a href="#newsletter" class="btn btn-secondary">
+          Join Newsletter
+        </a>
+
+      </div>
+
+    </section>
+
+    <!-- BLOG POSTS -->
+
+    <section class="blog-grid">
+
+      <!-- POST 1 -->
+
+      <article class="blog-card" id="post-1">
+
+        <span class="tag blue">Productivity</span>
+
+        <h3>How to Stay Consistent When Learning Tech</h3>
+
+        <p>
+          Consistency beats intensity especially when motivation fades.
+        </p>
+
+        <hr>
+
+        <p>
+          Most beginners fail because they try
+          to learn everything at once.
+        </p>
+
+        <ul>
+
+          <li>Focus on one goal at a time.</li>
+
+          <li>Study daily even for 30 minutes.</li>
+
+          <li>Track your progress consistently.</li>
+
+          <li>Celebrate small wins.</li>
+
+        </ul>
+
+      </article>
+
+      <!-- POST 2 -->
+
+      <article class="blog-card">
+
+        <span class="tag yellow">Beginner Guide</span>
+
+        <h3>A Simple Roadmap for Your First Tech Project</h3>
+
+        <p>
+          Projects teach faster than tutorials.
+        </p>
+
+        <hr>
+
+        <ol>
+
+          <li>Choose one clear project idea.</li>
+
+          <li>Write down simple features.</li>
+
+          <li>Plan the layout.</li>
+
+          <li>Build step-by-step.</li>
+
+          <li>Improve and publish it.</li>
+
+        </ol>
+
+      </article>
+
+      <!-- POST 3 -->
+
+      <article class="blog-card">
+
+        <span class="tag green">Mindset</span>
+
+        <h3>Mindset for Growth: You’ll Improve With Time</h3>
+
+        <p>
+          Your first projects won’t look professional and that’s okay.
+        </p>
+
+        <hr>
+
+        <ul>
+
+          <li>Read error messages carefully.</li>
+
+          <li>Fix one issue at a time.</li>
+
+          <li>Practice consistently.</li>
+
+          <li>Ask questions when stuck.</li>
+
+        </ul>
+
+      </article>
+
+    </section>
+
+    <!-- NEWSLETTER -->
+
+    <section class="newsletter" id="newsletter">
+
+      <h2>Join The Newsletter</h2>
+
+      <p>
+        Receive motivational tech content,
+        productivity tips, and growth advice directly in your inbox.
+      </p>
+
+      <form>
+
+        <input type="email" placeholder="Enter your email">
+
+        <button type="submit">
+          Subscribe
+        </button>
+
+      </form>
+
+    </section>
+
+    <!-- QUOTE -->
+
+    <section class="quote">
+
+      <h2>TechPathway Quote</h2>
+
+      <p>
+        “Every expert in technology was once a beginner who refused to quit.”
+      </p>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="footer-container">
+
+      <div class="footer-box">
+
+        <h2>TechPathway</h2>
+
+        <p>
+          Inspiring future developers,
+          creators, designers, and innovators.
+        </p>
+
+      </div>
+
+      <div class="footer-box">
+
+        <h3>Contact</h3>
+
+        <p>Email: hylondoncode@gmail.com</p>
+
+        <p>Phone: +234 9153 249 144</p>
+
+        <p>Ajah, Lagos, Nigeria</p>
+
+      </div>
+
+      <div class="footer-box">
+
+        <h3>Follow Us</h3>
+
+        <div class="social-links">
+
+          <a href="#">Facebook</a>
+
+          <a href="#">Twitter</a>
+
+          <a href="#">LinkedIn</a>
+
+          <a href="#">Instagram</a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+      <small>
+        © 2026 TechPathway. All Rights Reserved.
+      </small>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>
