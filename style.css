@@ -172,7 +172,7 @@ header {
     .nav-links a {
         display: block;
         padding: 8px 14px;
-        background: rgba(255,255,255,0.08);
+        background: rgba(255, 255, 255, 0.08);
         border-radius: 8px;
         font-size: 0.9rem;
     }
@@ -299,15 +299,23 @@ header {
         font-size: 1.1rem;
     }
 
-   .hero {
-        padding-top: 140px; /* creates space below fixed header */
+    .hero {
+        padding-top: 140px;
+        /* creates space below fixed header */
     }
 
     .profile-image {
         width: 180px;
         height: 180px;
-        margin-top: 20px;
+        margin-top: 100px;
     }
+
+
+    .hero-content {
+        margin-top: 120px;
+    }
+
+
 }
 
 .contact-section {
@@ -829,7 +837,7 @@ header {
     gap: 10px;
     color: #b8bdd8;
     text-decoration: none;
-    margin-bottom: 15px;      
+    margin-bottom: 15px;
     transition: .3s;
     font-size: 1rem;
 }
