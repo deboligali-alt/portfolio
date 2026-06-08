@@ -130,25 +130,41 @@ header {
 
 /* MOBILE MENU */
 @media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
+
+    header {
+        position: fixed;
+        width: 100%;
     }
 
-    .nav {
-        width: 100%;
-        justify-content: center;
+    .container {
+        padding: 12px 5%;
+        gap: 10px;
+    }
+
+    .logo h2 {
+        font-size: 1.4rem;
     }
 
     .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
+        gap: 12px;
+    }
+
+    .nav-links a {
+        font-size: 0.9rem;
     }
 
     .hire-btn {
-        margin-top: 5px;
+        padding: 8px 18px;
+        font-size: 0.9rem;
+    }
+
+    /* Push hero content below header */
+    .hero {
+        padding-top: 220px;
+    }
+
+    .profile-image {
+        margin-top: 0;
     }
 }
 
