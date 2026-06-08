@@ -129,42 +129,65 @@ header {
 }
 
 /* MOBILE MENU */
+/* MOBILE HEADER */
 @media (max-width: 768px) {
 
-    header {
-        position: fixed;
-        width: 100%;
+    .container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 15px 5%;
+        gap: 15px;
     }
 
-    .container {
-        padding: 12px 5%;
-        gap: 10px;
+    /* Portfolio at center */
+    .logo {
+        width: 100%;
+        text-align: center;
     }
 
     .logo h2 {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
+    }
+
+    /* Dropdown style navigation */
+    .nav {
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
 
     .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 12px;
+        width: 100%;
+    }
+
+    .nav-links li {
+        list-style: none;
     }
 
     .nav-links a {
+        display: block;
+        padding: 8px 14px;
+        background: rgba(255,255,255,0.08);
+        border-radius: 8px;
         font-size: 0.9rem;
     }
 
+    /* Hire Me centered */
     .hire-btn {
-        padding: 8px 18px;
-        font-size: 0.9rem;
+        width: fit-content;
+        padding: 10px 24px;
+        margin: 0 auto;
+        font-size: 0.95rem;
     }
 
-    /* Push hero content below header */
+    /* Create space below fixed header */
     .hero {
-        padding-top: 220px;
-    }
-
-    .profile-image {
-        margin-top: 0;
+        padding-top: 260px;
     }
 }
 
@@ -806,7 +829,7 @@ header {
     gap: 10px;
     color: #b8bdd8;
     text-decoration: none;
-    margin-bottom: 15px;
+    margin-bottom: 15px;      
     transition: .3s;
     font-size: 1rem;
 }
