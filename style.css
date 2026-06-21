@@ -792,12 +792,12 @@ header {
 }
 
 /* IMAGE */
-.project-card img{
+.project-card img {
     width: 100%;
-    height: 220px;        /* you can increase or remove this */
-    object-fit: contain;  /* IMPORTANT: shows full image */
-    background: #0b123f;  /* optional nice fallback background */
-    padding: 10px;        /* optional spacing */
+    height: 220px;
+    object-fit: contain;
+    background: #0b123f;
+    padding: 10px;
 }
 
 /* CONTENT */
@@ -869,6 +869,16 @@ header {
     box-shadow:
         0 0 20px #00ff66,
         0 0 40px rgba(0, 255, 102, .4);
+}
+
+
+/* Tool */
+.tool {
+    background: rgba(0, 255, 102, .08);
+    border: 1px solid #a20f11;
+    box-shadow:
+        0 0 20px #a20f11,
+        0 0 40px rgba(192, 107, 107, 0.4);
 }
 
 
