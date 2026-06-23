@@ -9,9 +9,37 @@ html {
 }
 
 body {
-    overflow-x: hidden;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #050b24;
+    position: relative;
+}
+
+.cursor-glow {
+    width: 300px;
+    height: 300px;
+
+    position: fixed;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+            rgba(0, 207, 255, .15),
+            transparent 70%);
+
+    pointer-events: none;
+    z-index: 0;
+
+
+
+    .hidden {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all .8s ease;
+    }
+
+    .show {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 header {
@@ -227,7 +255,23 @@ header {
     overflow: hidden;
     display: block;
     box-shadow: 0 0 25px rgba(0, 207, 255, 0.3);
+    animation: float 5s ease-in-out infinite;
 }
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
 
 .profile-image img {
     width: 100%;
@@ -243,9 +287,26 @@ header {
 
 /* TEXT */
 .hero h1 {
-    font-size: 3.5rem;
+    font-size: 4rem;
     font-weight: 900;
-    letter-spacing: 2px;
+
+    background: linear-gradient(90deg,
+            #00cfff,
+            #635bff,
+            #00ffcc);
+
+    background-size: 300% auto;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: textGlow 5s linear infinite;
+}
+
+@keyframes textGlow {
+    to {
+        background-position: 300%;
+    }
 }
 
 .hero h3 {
@@ -287,6 +348,28 @@ header {
     line-height: 1.8;
     max-width: 900px;
     margin: auto;
+}
+
+
+
+.ai-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0, 207, 255, .08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 207, 255, .08) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: gridMove 15s linear infinite;
+}
+
+@keyframes gridMove {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(50px);
+    }
 }
 
 @media(max-width:768px) {
@@ -724,9 +807,59 @@ header {
     gap: 12px;
 }
 
-.skill-box:hover {
-    transform: translateY(-12px);
+
+
+.skill-box::before {
+    content: "";
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    background: linear-gradient(45deg,
+            transparent,
+            rgba(255, 255, 255, .15),
+            transparent);
+    top: -50%;
+    left: -150%;
+    transition: .8s;
 }
+
+.skill-box:hover::before {
+    left: 150%;
+}
+
+.skill-box:hover {
+    transform: translateY(-15px) scale(1.03);
+}
+
+.skill-box li {
+    transition: .3s ease;
+}
+
+.skill-box li:hover {
+    transform: translateX(10px);
+    color: #00cfff;
+}
+
+.skill-box li:hover i {
+    transform: rotate(15deg) scale(1.2);
+    color: white;
+}
+
+.skill-box i {
+    transition: .3s ease;
+}
+
+.skill-box h3 i {
+    margin-right: 10px;
+}
+
+.skill-box:hover h3 {
+    color: #00cfff;
+}
+
+/* .skill-box:hover {
+    transform: translateY(-12px);
+} */
 
 .skill-box h3 {
     font-size: 1.8rem;
@@ -742,18 +875,6 @@ header {
     display: flex;
     flex-direction: column;
     gap: 12px;
-}
-
-.skill-box li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: #ffffff;
-}
-
-.skill-box i {
-    color: #00cfff;
-    font-size: 1.2rem;
 }
 
 
@@ -787,8 +908,14 @@ header {
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     overflow: hidden;
-    transition: 0.4s ease;
+    transform-style: preserve-3d;
+    transition: .4s;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.project-card:hover {
+    transform:
+        perspective(1000px) rotateX(5deg) rotateY(-5deg) translateY(-10px);
 }
 
 /* IMAGE */
@@ -879,6 +1006,274 @@ header {
     box-shadow:
         0 0 20px #a20f11,
         0 0 40px rgba(192, 107, 107, 0.4);
+}
+
+
+
+.ai-automation {
+    background: rgba(255, 165, 0, .08);
+    border: 1px solid orange;
+    box-shadow:
+        0 0 20px orange,
+        0 0 40px rgba(255, 165, 0, .4);
+}
+
+.host {
+    background: rgba(0, 191, 255, .08);
+    border: 1px solid deepskyblue;
+    box-shadow:
+        0 0 20px deepskyblue,
+        0 0 40px rgba(0, 191, 255, .4);
+}
+
+.testing {
+    background: rgba(255, 20, 147, .08);
+    border: 1px solid deeppink;
+    box-shadow:
+        0 0 20px deeppink,
+        0 0 40px rgba(255, 20, 147, .4);
+}
+
+
+
+
+.status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.status span {
+    width: 12px;
+    height: 12px;
+    background: #00ff66;
+    border-radius: 50%;
+
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 255, 102, .7);
+    }
+
+    100% {
+        box-shadow: 0 0 0 20px rgba(0, 255, 102, 0);
+    }
+}
+
+
+.stats {
+    padding: 120px 5%;
+    background: linear-gradient(135deg,
+            #050b24,
+            #0c143a,
+            #101a4f);
+}
+
+.stats-title {
+    text-align: center;
+    color: white;
+    font-size: 3rem;
+    margin-bottom: 70px;
+    position: relative;
+}
+
+.stats-title::after {
+    content: "";
+    width: 90px;
+    height: 4px;
+    background: #00cfff;
+    display: block;
+    margin: 15px auto;
+    border-radius: 50px;
+    box-shadow: 0 0 20px #00cfff;
+}
+
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.stat-card {
+    position: relative;
+    overflow: hidden;
+
+    background: rgba(255, 255, 255, .05);
+
+    backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(255, 255, 255, .1);
+
+    border-radius: 25px;
+
+    padding: 40px 30px;
+
+    text-align: center;
+
+    transition: .5s ease;
+
+    cursor: pointer;
+}
+
+.stat-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: -100%;
+    left: -100%;
+
+    width: 250%;
+    height: 250%;
+
+    background: linear-gradient(45deg,
+            transparent,
+            rgba(255, 255, 255, .08),
+            transparent);
+
+    transition: .8s;
+}
+
+.stat-card:hover::before {
+    left: 100%;
+    top: 100%;
+}
+
+.stat-card:hover {
+    transform: translateY(-15px) scale(1.03);
+
+    border-color: #00cfff;
+
+    box-shadow:
+        0 0 20px rgba(0, 207, 255, .6),
+        0 0 40px rgba(0, 207, 255, .3),
+        0 0 60px rgba(0, 207, 255, .2);
+}
+
+.stat-card i {
+    font-size: 3rem;
+    color: #00cfff;
+    margin-bottom: 20px;
+
+    text-shadow:
+        0 0 15px #00cfff,
+        0 0 30px #00cfff;
+}
+
+.stat-card h3 {
+    color: white;
+    font-size: 3rem;
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+
+.stat-card p {
+    color: #b8bdd8;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+@media(max-width:768px) {
+
+    .stats-title {
+        font-size: 2.2rem;
+    }
+
+    .stat-card {
+        padding: 30px;
+    }
+
+    .stat-card h3 {
+        font-size: 2.4rem;
+    }
+}
+
+.stat-card i {
+    animation: floatIcon 3s ease-in-out infinite;
+}
+
+@keyframes floatIcon {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+
+.background-animation {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.background-animation span {
+    position: absolute;
+    display: block;
+    border-radius: 50%;
+    background: rgba(0, 207, 255, .12);
+    backdrop-filter: blur(5px);
+
+    animation: floatParticle linear infinite;
+}
+
+.background-animation span:nth-child(1) {
+    width: 120px;
+    height: 120px;
+    left: 10%;
+    animation-duration: 20s;
+}
+
+.background-animation span:nth-child(2) {
+    width: 80px;
+    height: 80px;
+    left: 30%;
+    animation-duration: 15s;
+}
+
+.background-animation span:nth-child(3) {
+    width: 150px;
+    height: 150px;
+    left: 55%;
+    animation-duration: 25s;
+}
+
+.background-animation span:nth-child(4) {
+    width: 100px;
+    height: 100px;
+    left: 75%;
+    animation-duration: 18s;
+}
+
+.background-animation span:nth-child(5) {
+    width: 70px;
+    height: 70px;
+    left: 90%;
+    animation-duration: 22s;
+}
+
+@keyframes floatParticle {
+    from {
+        transform: translateY(100vh) rotate(0deg);
+    }
+
+    to {
+        transform: translateY(-200px) rotate(360deg);
+    }
 }
 
 
