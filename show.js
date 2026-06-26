@@ -74,3 +74,33 @@ document.querySelectorAll(
     el.classList.add('hidden');
     observer.observe(el);
 });
+
+// for toggle
+const menuToggle = document.getElementById("menuToggle");
+const nav = document.querySelector(".nav");
+
+menuToggle.addEventListener("click", () => {
+
+    nav.classList.toggle("active");
+
+    if(nav.classList.contains("active")){
+        menuToggle.innerHTML = '<i class="fas fa-times"></i>';
+    }else{
+        menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+    }
+
+});
+
+
+document.querySelectorAll(".nav-links a").forEach(link=>{
+
+    link.addEventListener("click",()=>{
+
+        nav.classList.remove("active");
+
+        menuToggle.innerHTML =
+        '<i class="fas fa-bars"></i>';
+
+    });
+
+});
