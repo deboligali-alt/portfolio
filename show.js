@@ -83,24 +83,46 @@ menuToggle.addEventListener("click", () => {
 
     nav.classList.toggle("active");
 
-    if(nav.classList.contains("active")){
+    if (nav.classList.contains("active")) {
         menuToggle.innerHTML = '<i class="fas fa-times"></i>';
-    }else{
+    } else {
         menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
     }
 
 });
 
 
-document.querySelectorAll(".nav-links a").forEach(link=>{
+document.querySelectorAll(".nav-links a").forEach(link => {
 
-    link.addEventListener("click",()=>{
+    link.addEventListener("click", () => {
 
         nav.classList.remove("active");
 
         menuToggle.innerHTML =
-        '<i class="fas fa-bars"></i>';
+            '<i class="fas fa-bars"></i>';
 
     });
 
+});
+
+// Certificate Animation
+
+const certificateCards = document.querySelectorAll(".certificate-card");
+
+const certificateObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+        }
+    });
+}, {
+    threshold: 0.2
+});
+
+certificateCards.forEach(card => {
+    card.style.opacity = "0";
+    card.style.transform = "translateY(60px)";
+    card.style.transition = "0.8s ease";
+    certificateObserver.observe(card);
 });
